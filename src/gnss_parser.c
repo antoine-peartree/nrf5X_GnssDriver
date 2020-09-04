@@ -99,3 +99,26 @@ static void gnss_parse_gsa(char *nmea_msg, struct gsa_t *gsa)
     gsa->hdop = atof(strtok(NULL, ","));
     gsa->vdop = atof(strtok(NULL, ","));
 }
+
+
+void gnss_parse(char *nmea_msg, struct gps_ctx_t *gps_ctx)
+{
+    if (!strncmp(nmea_msg + 3, "GGA", 3)) {
+        gnss_parse_gga(nmea_msg, &gps_ctx->gga);
+    } else if (!strncmp(nmea_msg + 3, "GLL", 3)) {
+        gnss_parse_gll(nmea_msg, &gps_ctx->gll);
+    } else if (!strncmp(nmea_msg + 3, "GSV", 3)) {
+        gnss_parse_gsv(nmea_msg, &gps_ctx->gsv);
+    } else if (!strncmp(nmea_msg + 3, "VTG", 3)) {
+        gnss_parse_vtg(nmea_msg, &gps_ctx->vtg);
+    } else if (!strncmp(nmea_msg + 3, "RMC", 3)) {
+        gnss_parse_rmc(nmea_msg, &gps_ctx->rmc);
+    } else if (!strncmp(nmea_msg + 3, "GSA", 3)) {
+       gnss_parse_gsa(nmea_msg, &gps_ctx->gsa);
+    } else if (!strncmp(nmea_msg + 3, "TXT", 3)) {
+        NRF_LOG_INFO("Txt msg received : %s", nmea_msg);
+    } else {
+        NRF_LOG_INFO("%s msgs non recognized", strtok(nmea_msg, ","));
+    }
+    NRF_LOG_FLUSH();
+}
