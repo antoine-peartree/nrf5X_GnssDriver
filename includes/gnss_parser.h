@@ -93,3 +93,5 @@ struct gps_ctx_t {
     struct gsa_t gsa;
     struct vtg_t vtg;
 };
+
+void gnss_parse(char *nmea_msg, struct gps_ctx_t *gps_ctx);
