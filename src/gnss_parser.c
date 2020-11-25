@@ -5,7 +5,7 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
-#include "../includes/gnss_parser.h"
+#include "gnss_parser.h"
 
 
 static void gnss_parse_gga(char *nmea_msg, struct gga_t *gga)

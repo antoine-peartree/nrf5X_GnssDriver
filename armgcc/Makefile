@@ -201,7 +201,7 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/libraries/log/src \
   $(SDK_ROOT)/components/libraries/uart \
   $(SDK_ROOT)/components/libraries/fifo \
-  $(PROJ_DIR)/includes \
+  $(PROJ_DIR)/include \
 
 # Libraries common to all targets
 LIB_FILES += \

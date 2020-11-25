@@ -10,7 +10,7 @@
 #include "nrf_uart.h"
 #include "nrf_delay.h"
 
-#include "../includes/gnss.h"
+#include "gnss.h"
 
 
 static bool gnss_compare_crc(char *msg)
